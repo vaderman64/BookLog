@@ -41,11 +41,13 @@ const handleGoogleSignIn = async () => {
 const googleSignInButton = document.getElementById('google-signin');
 googleSignInButton.addEventListener('click', handleGoogleSignIn);
 
-// Load books and render them in the UI
+// Load books and render them in the UI with sorting
 const loadAndRenderBooks = async () => {
     try {
         const books = await loadBooks();
-        renderBooks(books);
+        const sortBy = document.getElementById('sort-by').value;
+        const sortedBooks = sortBooks(books, sortBy);
+        renderBooks(sortedBooks);
     } catch (error) {
         console.error("Error loading books:", error);
         showFeedback("You must be logged in to view your books.", "error");
@@ -207,5 +209,30 @@ window.onload = async () => {
     await initializeChatbot();
     setupAuth();
 };
+
+// Function to sort books by genre or author
+const sortBooks = (books, sortBy) => {
+    if (sortBy === "genre") {
+        return books.sort((a, b) => a.genre.localeCompare(b.genre));
+    } else if (sortBy === "author") {
+        return books.sort((a, b) => a.author.localeCompare(b.author));
+    } else {
+        return books;
+    }
+};
+
+// Add event listener for sorting dropdown
+const sortByDropdown = document.getElementById('sort-by');
+sortByDropdown.addEventListener('change', async (e) => {
+    const sortBy = e.target.value;
+    try {
+        const books = await loadBooks();
+        const sortedBooks = sortBooks(books, sortBy);
+        renderBooks(sortedBooks);
+    } catch (error) {
+        console.error("Error sorting books:", error);
+        showFeedback("Failed to sort books. Please try again.", "error");
+    }
+});
 
 export { loadAndRenderBooks }

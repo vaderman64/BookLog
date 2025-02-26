@@ -321,3 +321,23 @@ footer {
   width: 16px;
   height: 16px;
 }
+
+/* Sorting Options */
+#sort-options {
+  margin-bottom: 1rem;
+}
+
+#sort-by {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+#sort-by:focus {
+  border-color: #3498db;
+  outline: none;
+}

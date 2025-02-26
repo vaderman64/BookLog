@@ -26,7 +26,7 @@ const showFeedback = (message, type = 'success') => {
         }, 300)
     }, 3000);
 };
-// Render books in the UI
+// Render books in the UI with sorting indication
 const renderBooks = (books) => {
     bookList.innerHTML = '';
     if (books.length === 0) {
@@ -36,10 +36,10 @@ const renderBooks = (books) => {
         books.forEach((book) => {
             const li = document.createElement('li');
             li.innerHTML = `
-        <span><strong>${book.title}</strong> by ${book.author} (${book.genre}) - Rating: ${book.rating}/5</span>
-        <button onclick="editBook('${book.id}')">Edit</button>
-        <button onclick="deleteBook('${book.id}')">Delete</button>
-      `;
+                <span><strong>${book.title}</strong> by ${book.author} (${book.genre}) - Rating: ${book.rating}/5</span>
+                <button onclick="editBook('${book.id}')">Edit</button>
+                <button onclick="deleteBook('${book.id}')">Delete</button>
+            `;
             bookList.appendChild(li);
         });
     }
