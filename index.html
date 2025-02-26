@@ -21,8 +21,8 @@
     <section id="auth-section">
         <h2>Please Login</h2>
         <form id="auth-form">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
+            <input aria-label="Email Input" type="email" id="email" placeholder="Email" required>
+            <input aria-label="Password Input" type="password" id="password" placeholder="Password" required>
             <button type="submit" id="auth-submit">Log In</button>
         </form>
         <button id="auth-toggle">Sign Up</button>
@@ -70,7 +70,7 @@
             <h2>Chatbot</h2>
             <div id="chat-history"></div>
             <div id="chat-input">
-                <input type="text" id="ai-input" placeholder="Ask me anything...">
+                <input aria-label="AI Chatbot Input" type="text" id="ai-input" placeholder="Try: delete book Name, or List books, or add book Title, Author, Genre, Rating /5 ">
                 <button id="ai-button">Send</button>
             </div>
         </section>

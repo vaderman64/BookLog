@@ -63,7 +63,7 @@ header p {
 }
 
 #auth-toggle {
-  background: #3498db;
+  background: #0c629b;
   color: #fff;
   border: none;
   padding: 0.75rem;
@@ -81,7 +81,7 @@ header p {
 #auth-message {
   text-align: center;
   margin-top: 1rem;
-  color: #e74c3c;
+  color: #821408;
 }
 
 /* Main Content Sections */
@@ -117,12 +117,12 @@ input, button {
 }
 
 input:focus {
-  border-color: #3498db;
+  border-color: #0c629b;
   outline: none;
 }
 
 button {
-  background: #3498db;
+  background: #0c629b;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -130,7 +130,7 @@ button {
 }
 
 button:hover {
-  background: #2980b9;
+  background: #0c629b;
 }
 
 /* Book List Container */
@@ -258,7 +258,7 @@ footer {
 
 #ai-button {
   padding: 0.75rem 1rem;
-  background: #3498db;
+  background: #0c629b;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -338,7 +338,7 @@ footer {
 }
 
 #sort-by:focus {
-  border-color: #3498db;
+  border-color: #0c629b;
   outline: none;
 }
 
