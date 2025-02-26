@@ -2,7 +2,7 @@
 
 **Book Log** is a web application that helps you track the books you’ve read, rate them, and organize them by genre or author. It also includes a **Chatbot** powered by Google Generative Gemini AI to assist you in managing your book collection (or at least try to).
 
-👉 [Live Demo]([https://your-username.github.io/your-repo](https://vaderman64.github.io))
+👉 [Live Demo](https://vaderman64.github.io)
 
 ---
 
