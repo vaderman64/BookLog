@@ -1,20 +1,39 @@
-import { db, auth, googleProvider, signInWithPopup } from './firebase.js';
+import { db, auth, googleProvider } from './firebase.js';
 import { bookForm, bookList, showFeedback, renderBooks, highlightBook } from './ui.js';
 import { loadBooks, addBook, deleteBook, editBook, getBook } from './books.js';
 import { initializeChatbot } from './chatbot.js';
 import { showAuthForm, hideAuthForm, showAuthMessage, authForm, authToggle, logoutButton } from './ui.js';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, fetchSignInMethodsForEmail, EmailAuthProvider, linkWithCredential } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
 // Handle Google Sign-In
 const handleGoogleSignIn = async () => {
     try {
         const result = await signInWithPopup(auth, googleProvider);
-        showFeedback("Signed in with Google successfully!", "success");
+        const user = result.user;
+
+        // Check if the user already has an email/password account
+        const email = user.email;
+        const methods = await fetchSignInMethodsForEmail(auth, email);
+
+        if (methods.includes("password")) {
+            const password = prompt("You already have an account with this email. Please enter your password to link your Google account.");
+            if (password) {
+                const credential = EmailAuthProvider.credential(email, password);
+                await linkWithCredential(user, credential);
+                showFeedback("Google account linked successfully!", "success");
+            } else {
+                await signOut(auth);
+                showFeedback("Account linking canceled.", "error");
+                return;
+            }
+        }
+
         hideAuthForm();
         loadAndRenderBooks();
+        showFeedback("Signed in with Google successfully!", "success");
     } catch (error) {
-        showFeedback("Failed to sign in with Google. Please try again.", "error");
         console.error("Google Sign-In Error:", error);
+        showFeedback("Failed to sign in with Google. Please try again.", "error");
     }
 };
 
