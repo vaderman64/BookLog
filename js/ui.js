@@ -12,21 +12,20 @@ const showFeedback = (message, type = 'success') => {
     popup.id = 'popup-message';
     popup.textContent = message;
     popup.classList.add(type === 'error' ? 'error' : 'success');
-  
-    document.body.appendChild(popup);
-  
-    setTimeout(() => {
-      popup.classList.add('show');
-    }, 10);
-  
-    setTimeout(() => {
-      popup.classList.remove('show');
-      setTimeout(() => {
-        popup.remove();
-      }, 300);
-    }, 3000);
-  };
 
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add('show');
+    }, 10);
+
+    setTimeout(() => {
+        popup.classList.remove('show');
+        setTimeout(() => {
+            popup.remove();
+        }, 300)
+    }, 3000);
+};
 // Render books in the UI
 const renderBooks = (books) => {
     bookList.innerHTML = '';
