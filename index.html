@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Log: Track books you’ve read, rate them, and organize by genre or author.">
+    <title>Book Log</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Book Log</h1>
+        <p>Track books you’ve read, rate them, and organize by genre or author.</p>
+        <!-- Logout Button in Header -->
+        <button id="logout-button" style="display: none;">Log Out</button>
+    </header>
+
+    <!-- Authentication Section -->
+    <section id="auth-section">
+        <h2>Authentication</h2>
+        <form id="auth-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" id="auth-submit">Log In</button>
+        </form>
+        <!-- Styled Sign-Up Toggle Button -->
+        <button id="auth-toggle">Sign Up</button>
+        <p id="auth-message"></p>
+    </section>
+
+    <main>
+        <!-- Add a Book Section -->
+        <section id="add-book-section">
+            <h2>Add a Book</h2>
+            <form id="add-book-form">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required aria-required="true">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required aria-required="true">
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre" required aria-required="true">
+                <label for="rating">Rating (1-5):</label>
+                <input type="number" id="rating" name="rating" min="1" max="5" required aria-required="true">
+                <button type="submit">Add Book</button>
+            </form>
+        </section>
+
+        <!-- Your Books Section -->
+        <section id="your-books-section">
+            <h2>Your Books</h2>
+            <ul id="books"></ul>
+        </section>
+
+        <!-- Chatbot Section -->
+        <section id="chatbot-section">
+            <h2>Chatbot</h2>
+            <div id="chat-history"></div>
+            <div id="chat-input">
+                <input type="text" id="ai-input" placeholder="Ask me anything...">
+                <button id="ai-button">Send</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Book Log. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
