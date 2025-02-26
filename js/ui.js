@@ -6,18 +6,26 @@ noBooksMessage.id = 'no-books-message';
 noBooksMessage.textContent = 'No books found. Add a book to get started!';
 bookList.parentNode.insertBefore(noBooksMessage, bookList.nextSibling);
 
-// Show feedback message
+// Show feedback message as a popup
 const showFeedback = (message, type = 'success') => {
-    const feedback = document.createElement('div');
-    feedback.id = 'feedback';
-    feedback.textContent = message;
-    feedback.style.backgroundColor = type === 'success' ? '#27ae60' : '#e74c3c';
-    feedback.style.display = 'block';
-    document.body.appendChild(feedback);
+    const popup = document.createElement('div');
+    popup.id = 'popup-message';
+    popup.textContent = message;
+    popup.classList.add(type === 'error' ? 'error' : 'success');
+  
+    document.body.appendChild(popup);
+  
     setTimeout(() => {
-        feedback.style.display = 'none';
+      popup.classList.add('show');
+    }, 10);
+  
+    setTimeout(() => {
+      popup.classList.remove('show');
+      setTimeout(() => {
+        popup.remove();
+      }, 300);
     }, 3000);
-};
+  };
 
 // Render books in the UI
 const renderBooks = (books) => {

@@ -154,16 +154,16 @@ const handleAuth = async (e) => {
 
 // Handle logout
 const handleLogout = async () => {
-  try {
-    await signOut(auth);
-    showAuthForm();
-    bookList.innerHTML = '';
-    showFeedback("You have been logged out.", "success");
-  } catch (error) {
-    console.error("Error logging out:", error);
-    showAuthMessage("Failed to log out. Please try again.", "error");
-  }
-};
+    try {
+      await signOut(auth);
+      showAuthForm();
+      bookList.innerHTML = '';
+      showFeedback("You have been logged out.", "success");
+    } catch (error) {
+      console.error("Error logging out:", error);
+      showFeedback("Failed to log out. Please try again.", "error");
+    }
+  };
 
 // Toggle between login and signup modes
 const toggleAuthMode = () => {
