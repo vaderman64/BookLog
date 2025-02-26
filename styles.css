@@ -294,3 +294,30 @@ footer {
 #popup-message.error {
   background: #e74c3c;
 }
+
+/* Google Sign-In Button */
+#google-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #fff;
+  color: #757575;
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#google-signin:hover {
+  background: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#google-signin img {
+  width: 16px;
+  height: 16px;
+}

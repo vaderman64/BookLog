@@ -1,9 +1,26 @@
-import { db, auth } from './firebase.js';
+import { db, auth, googleProvider, signInWithPopup } from './firebase.js';
 import { bookForm, bookList, showFeedback, renderBooks, highlightBook } from './ui.js';
 import { loadBooks, addBook, deleteBook, editBook, getBook } from './books.js';
 import { initializeChatbot } from './chatbot.js';
 import { showAuthForm, hideAuthForm, showAuthMessage, authForm, authToggle, logoutButton } from './ui.js';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
+// Handle Google Sign-In
+const handleGoogleSignIn = async () => {
+    try {
+        const result = await signInWithPopup(auth, googleProvider);
+        showFeedback("Signed in with Google successfully!", "success");
+        hideAuthForm();
+        loadAndRenderBooks();
+    } catch (error) {
+        showFeedback("Failed to sign in with Google. Please try again.", "error");
+        console.error("Google Sign-In Error:", error);
+    }
+};
+
+// Add event listener for Google Sign-In button
+const googleSignInButton = document.getElementById('google-signin');
+googleSignInButton.addEventListener('click', handleGoogleSignIn);
 
 // Load books and render them in the UI
 const loadAndRenderBooks = async () => {
