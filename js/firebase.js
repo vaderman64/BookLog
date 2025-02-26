@@ -4,6 +4,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.3.1/firebase
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
 const firebaseConfig = {
+    // API Key is restricted to certain uses so that the repository can be public
   apiKey: "AIzaSyBDOYIGAOdyg9XlhF1kYkX3tJno8Q51DyA",
   authDomain: "booklog-1201b.firebaseapp.com",
   projectId: "booklog-1201b",
